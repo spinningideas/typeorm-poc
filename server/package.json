@@ -1,0 +1,28 @@
+{
+	"name": "TypeORMPOCServer",
+	"version": "1.0.0",
+	"description": "",
+	"main": "dist/app.js",
+	"scripts": {
+		"build": "tsc && nodemon dist/app.js",
+		"start": "nodemon dist/app.js",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"@types/node": "^13.1.0",
+		"@types/pg": "^7.14.0",
+		"body-parser": "^1.19.0",
+		"cors": "^2.8.5",
+		"express": "^4.17.1",
+		"jsonwebtoken": "^8.5.1",
+		"pg": "^7.15.1",
+		"reflect-metadata": "^0.1.13",
+		"typeorm": "^0.2.22"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.2",
+		"typescript": "^3.3.3333"
+	}
+}
