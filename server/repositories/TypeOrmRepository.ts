@@ -25,6 +25,22 @@ export default class TypeOrmRepository<T>  {
 	}
 
 	/**
+	 * count all records 
+	 */
+	count = async () => {
+		return this.getRepo()
+			.count()
+			.then(
+				data => {
+					return data;
+				},
+				err => {
+					return err;
+				}
+			);
+	}
+
+	/**
 	 * get all records 
 	 */
 	 findAll = async () => {
@@ -111,7 +127,7 @@ export default class TypeOrmRepository<T>  {
 	add = async (entity) => {
 		return this.getRepo().save(entity).then(
 			data => {
-				return data.toJSON();
+				return data;
 			},
 			err => { return err; }
 		);

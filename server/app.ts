@@ -4,6 +4,10 @@ import bodyParser from 'body-parser';
 import DataBase from './DataBase';
 import ContinentManager from'./managers/ContinentManager';
 import CountryManager from'./managers/CountryManager';
+import ContinentDataSeeder from'./seeds/ContinentDataSeeder';
+import CountryDataSeeder from'./seeds/CountryDataSeeder';
+
+// App vars
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 6001;
 const app = express();
@@ -15,7 +19,21 @@ app.use(cors());
 
 const db = new DataBase(null);
 
+//(async () => {
+
 db.initConnection().then(async (dbConnection) => {
+
+	await dbConnection.runMigrations();
+
+	let continentSeeder = new ContinentDataSeeder(dbConnection);
+	let countrySeeder = new CountryDataSeeder(dbConnection);
+	
+  //====================data seeding =======================
+	let continentsUpserted = await continentSeeder.upsertData();
+	console.log(`Upserted ${continentsUpserted} continents into database`);
+
+	let countriesUpserted = await countrySeeder.upsertData();
+	console.log(`Upserted ${countriesUpserted} countries into database`);
 
 	//====================continents=======================
 	app.get('/continents', async (req, res) => {
@@ -69,7 +87,4 @@ db.initConnection().then(async (dbConnection) => {
 
 }).catch((error) => console.log(error));
 
-
-
-
-
+//})();

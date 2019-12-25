@@ -13,13 +13,17 @@ export default class Continent {
 
 	@Column({
 		name: 'continent_code',
-		length: 2
+		length: 2,
+		unique:true,
+		nullable: false
 	})
 	continentCode: string;
 
 	@Column({
 		name: 'continent_name',
-		length: 50
+		length: 50,
+		unique:true,
+		nullable: false
 	})
 	continentName: string;
 }

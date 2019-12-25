@@ -14,21 +14,24 @@ export default class Country {
 	@Column({
 		name: 'country_name',
 		length: 100,
-		unique:true
+		unique:true,
+		nullable: false
 	})
 	countryName: string;
 
 	@Column({
 		name: 'country_code',
 		length: 2,
-		unique:true
+		unique:true,
+		nullable: false
 	})
 	countryCode: string;
 
 	@Column({
 		name: 'country_code3',
 		length: 3,
-		unique:true
+		unique:true,
+		nullable: false
 	})
 	countryCode3: string;
 
@@ -40,7 +43,8 @@ export default class Country {
 
 	@Column({
 		name: 'continent_code',
-		length: 2
+		length: 2,
+		nullable: false
 	})
 	continentCode: string;
 

@@ -16,27 +16,32 @@ __decorate([
     typeorm_1.Column({
         generated: true,
         nullable: false,
-        primary: true
+        primary: true,
+        name: 'continent_id'
     }),
-    typeorm_1.Generated("uuid"),
+    typeorm_1.Generated('uuid'),
     __metadata("design:type", String)
-], Continent.prototype, "id", void 0);
+], Continent.prototype, "continentId", void 0);
 __decorate([
     typeorm_1.Column({
-        name: "continent_code",
-        length: 2
+        name: 'continent_code',
+        length: 2,
+        unique: true,
+        nullable: false
     }),
     __metadata("design:type", String)
 ], Continent.prototype, "continentCode", void 0);
 __decorate([
     typeorm_1.Column({
-        name: "continent_name",
-        length: 50
+        name: 'continent_name',
+        length: 50,
+        unique: true,
+        nullable: false
     }),
     __metadata("design:type", String)
 ], Continent.prototype, "continentName", void 0);
 Continent = __decorate([
-    typeorm_1.Entity("continent", { schema: "public" })
+    typeorm_1.Entity('continent', { schema: 'public' })
 ], Continent);
 exports.default = Continent;
 //# sourceMappingURL=Continent.js.map

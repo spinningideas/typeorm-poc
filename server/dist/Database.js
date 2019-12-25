@@ -31,7 +31,7 @@ class Database {
                         //__dirname + "\\models\\*.ts"
                     ],
                     synchronize: true,
-                    logging: false
+                    logging: true
                 }).then((connection) => __awaiter(this, void 0, void 0, function* () {
                     this.dbConn = connection;
                     return this.dbConn;
