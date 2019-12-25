@@ -1,24 +1,24 @@
 # TypeORM POC
 
-The code in this repo demonstrates use of typeorm as an ORM using two tables with geography data sets. This example uses typescript and more advanced usage of building typescript into standard ES5 javascript hosting in traditional node.js express app
+The code in this repo demonstrates use of [typeorm](https://typeorm.io/) as an ORM using two tables with geography data sets. This example uses typescript and more advanced usage of building typescript into standard ES5 javascript hosted in a traditional node.js express app
 
-See https://typeorm.io/
+See https://typeorm.io/ and notes below for more info
 
 ## Get Started
 
 To get started perform the following steps:
 
-### 1) npm install
-
-```npm install```
-
-### 2) install PostGres 
+### 1) install PostGres 
 
 https://www.postgresql.org/download/
 
-### 3) Create PostGres database to use in this POC
+### 2) Create PostGres database to use in this POC
 
 After installing locally you should have database server and you need to enable credentials from Database.ts with access empty database named "orm_poc_typeorm"
+
+### 3) npm install
+
+```npm install```
 
 ### 4) Create database schema 
 
@@ -28,7 +28,7 @@ Run npm script "dev" which will do this via logic in app.ts or you can run migra
 
 ### 5) Populate database with data 
 
-There is logic in the app.ts file that will seed the two tables with data.
+There is logic in the app.ts file that will seed the two tables with data if the data is not already there.
 
 Data will be populated if it does not exist via:
 
@@ -36,7 +36,7 @@ Data will be populated if it does not exist via:
 
 ### 6) Run the application in development mode
 
-The application is written in typescript and compiled into javascript in a "dist" folder - the command below will compile the app and run it.
+The application is written in typescript and relies on tables and data that is created during app startup and running the npm command:
 
 ```npm run dev```
 
