@@ -58,7 +58,10 @@ Download and install https://www.getpostman.com and then import the collection i
 
 ### Repositories using TypeORM
 
-- https://stackoverflow.com/questions/40820195/creating-generic-repository-using-typeorm
+- https://stackoverflow.com/questions/40820195/
+creating-generic-repository-using-typeorm
+
+- https://octolinker-demo.now.sh/typeorm/typeorm/issues/4959
 
 ### TypeORM Migrations
 

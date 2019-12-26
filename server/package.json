@@ -4,8 +4,9 @@
 	"description": "TypeORM POC Server",
 	"main": "dist/app.js",
 	"scripts": {
-		"dev": "ts-node ./app.ts",
-		"build": "tsc && nodemon dist/app.js",
+		"dev": "nodemon ./app.ts",
+		"deves5": "tsc && nodemon dist/app.js",
+		"build": "tsc",
 		"migrations": "ts-node ./node_modules/typeorm/cli migration:run -f ormconfig.ts",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},

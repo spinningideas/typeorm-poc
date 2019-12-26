@@ -11,7 +11,7 @@ export default class CountryManager {
 			this.dbConn = dbConn;
 		}
 		if (dbConn && this.repo ===null) {
-			this.repo = new TypeOrmRepository(this.dbConn, Country);
+			this.repo = new TypeOrmRepository<Country>(this.dbConn, Country);
 		}
 	}
 

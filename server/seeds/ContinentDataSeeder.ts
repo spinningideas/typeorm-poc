@@ -12,7 +12,7 @@ export default class ContinentDataSeeder {
 			this.dbConn = dbConn;
 		}
 		if (dbConn && this.repo ===null) {
-			this.repo = new TypeOrmRepository(this.dbConn, Continent);
+			this.repo = new TypeOrmRepository<Continent>(this.dbConn, Continent);
 		}
 	}
 

@@ -1,24 +1,27 @@
 import { Connection, Repository } from 'typeorm';
 
+export type ObjectType<T> = { new (): T };
 
-export type ObjectType<T> = { new (): T } | Function;
+export type OrderByType = {
+	[name: string]: string;
+}
 
 export default class TypeOrmRepository<T>  {
 
 	dbConn: Connection;
-	modelType:ObjectType<T>;
+	repoEntityType:ObjectType<T>;
 	repo:Repository<T> = null;
 
-	constructor(dbConn: Connection, type: ObjectType<T>) {
+	constructor(dbConn: Connection, repoType: ObjectType<T>) {
 		if (dbConn) {
 			this.dbConn = dbConn;
 		}
-		this.modelType = type;
+		this.repoEntityType = repoType;
 	}
 
 	getRepo =()=> {
 		if(!this.repo){
-			this.repo = this.dbConn.getRepository<T>(this.modelType);
+			this.repo = this.dbConn.getRepository<T>(this.repoEntityType);
 			return this.repo;
 		}
 		return this.repo;
@@ -81,17 +84,14 @@ export default class TypeOrmRepository<T>  {
 		};
 		
 		const offset = (pageNumber-1) * pageSize;
-		let orderDirection = 'ASC';
-		if(orderDesc===true){
-			orderDirection = 'DESC'
-		}
-		const orderByVal = [[orderBy, orderDirection]];
+	
+		let orderByVal = this.getOrderByValue(orderBy, orderDesc);
 
 		const [resultData, resultCount] = await this.getRepo()
 			.findAndCount({
 				where: criteria,
 				skip: offset,
-				take: pageSize
+				take: pageSize,
 			})
 			.then(
 				data => {
@@ -102,7 +102,24 @@ export default class TypeOrmRepository<T>  {
 				}
 			);
 
-			return { total: resultCount, data: resultData };
+			return { total: resultCount, pageSize: pageSize, data: resultData };
+	}
+
+  getOrderByValue =(orderBy:string, orderDesc:boolean):OrderByType=> {		
+		let orderDirection = 'ASC';
+		if(orderDesc===true){
+			orderDirection = 'DESC'
+		}
+		const prop = this.getOrderByProp(this.repoEntityType, orderBy);
+		return { prop: orderDirection };
+	}
+		
+	getOrderByProp=<T>(obj: T, key: string):string => {
+		let keys = []
+		console.log('getOrderByProp-obj:' + obj);
+		Object.keys(obj).forEach(key => keys.push(key));
+		console.log('getOrderByProp-obj-keys:' + JSON.stringify(keys));
+		return obj[key];
 	}
 
 	/**
