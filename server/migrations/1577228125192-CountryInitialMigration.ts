@@ -1,10 +1,10 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
- 
+
 export class CountryInitialMigration1577228125192 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<any> {
-		const tableExists = await queryRunner.hasTable("country");
-		if(!tableExists){
-			await queryRunner.query(`
+    const tableExists = await queryRunner.hasTable('country');
+    if (!tableExists) {
+      await queryRunner.query(`
 			CREATE TABLE public.country
 			(
 					country_id uuid NOT NULL,
@@ -23,9 +23,8 @@ export class CountryInitialMigration1577228125192 implements MigrationInterface 
 					CONSTRAINT country_pkey PRIMARY KEY (country_id),
 					CONSTRAINT country_country_name_key UNIQUE (country_name)
 			
-			)`
-			);
-		}
+			)`);
+    }
   }
   public async down(queryRunner: QueryRunner): Promise<any> {
     await queryRunner.query('DROP TABLE "country"');

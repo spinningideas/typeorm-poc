@@ -1,84 +1,66 @@
 {
-	"info": {
-		"_postman_id": "a7dc077d-26a1-4bf7-9bf1-e99bd9cace46",
-		"name": "TypeOrmPOC",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-	},
-	"item": [
-		{
-			"name": "continents",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "http://localhost:6001/continents",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "6001",
-					"path": [
-						"continents"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "countries-paged",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "http://localhost:6001/countries/NA/1/10/population/true",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "6001",
-					"path": [
-						"countries",
-						"NA",
-						"1",
-						"10",
-						"population",
-						"true"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "country",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "http://localhost:6001/country/US",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "6001",
-					"path": [
-						"country",
-						"US"
-					]
-				}
-			},
-			"response": []
-		}
-	]
+  "info": {
+    "_postman_id": "a7dc077d-26a1-4bf7-9bf1-e99bd9cace46",
+    "name": "TypeOrmPOC",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "continents",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://localhost:6001/continents",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "6001",
+          "path": ["continents"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "countries-paged",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://localhost:6001/countries/NA/1/10/population/true",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "6001",
+          "path": ["countries", "NA", "1", "10", "population", "true"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "country",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://localhost:6001/country/US",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "6001",
+          "path": ["country", "US"]
+        }
+      },
+      "response": []
+    }
+  ]
 }
