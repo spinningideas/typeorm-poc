@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import DataBase from './DataBase';
+import Database from './Database';
 import ContinentManager from './managers/ContinentManager';
 import CountryManager from './managers/CountryManager';
 import ContinentDataSeeder from './seeds/ContinentDataSeeder';
@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
-const db = new DataBase(null);
+const db = new Database(null);
 
 //(async () => {
 
