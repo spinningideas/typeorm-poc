@@ -16,9 +16,9 @@ https://www.postgresql.org/download/
 
 ### 2) Create PostgreSQL database to use in this POC along with user that has permissions to modify and access the database
 
-- After installing locally you should have database server 
-- Create an empty database named "typeorm_poc"
-- Create a create an account named "typeorm_poc_user" in your postgres database server with full permissions to the database named "typeorm_poc" using the password in ormconfig.ts (or change it in that file to match what you provided when you create the account)
+- After installing locally you should have database server and the code connects to db using information in ormconfig.ts file so you need to ensure this db and user exists before running the code
+- Create an empty database named "typeorm_poc_db"
+- Create a create an account named "typeorm_poc_user" in your postgres database server with full permissions to the database named "typeorm_poc_db" using the password in ormconfig.ts (or change it in that file to match what you provided when you create the account)
 
 Here are sql scripts to run:
 
