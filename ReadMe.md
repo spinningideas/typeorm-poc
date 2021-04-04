@@ -8,11 +8,13 @@ See https://typeorm.io/ and notes below for more info
 
 To get started perform the following steps:
 
-### 1) install PostGres 
+### 1) Install PostgreSQL  
+
+Go to downloads section and select the latest version (13.2 as of 4/2021) for your operating system
 
 https://www.postgresql.org/download/
 
-### 2) Create PostGres database to use in this POC along with user that has permissions to modify and access the database
+### 2) Create PostgreSQL database to use in this POC along with user that has permissions to modify and access the database
 
 - After installing locally you should have database server 
 - Create an empty database named "typeorm_poc"
