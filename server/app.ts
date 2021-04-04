@@ -19,8 +19,6 @@ app.use(cors());
 
 const db = new Database(null);
 
-//(async () => {
-
 db.initConnection()
   .then(async (dbConnection) => {
     await dbConnection.runMigrations();
@@ -82,5 +80,3 @@ db.initConnection()
     });
   })
   .catch((error) => console.log(error));
-
-//})();
