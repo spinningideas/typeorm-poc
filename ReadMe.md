@@ -34,6 +34,9 @@ https://www.postgresql.org/download/
 
 Here are sql scripts to run:
 
+NOTE: run one at a time in order, first create the db then select the db and run these queries IN the new database so that the user has proper permissions to create tables and insert data.
+
+
 ```
 CREATE DATABASE typeorm_poc_db;
 
@@ -85,9 +88,17 @@ The application is written in typescript and compiled into javascript in a "dist
 
 ```npm run build```
 
-### 7) exercise the application via postman
+### 7) exercise the application via postman OR thunder client
 
-Download and install https://www.getpostman.com and then import the collection in the "postman" folder and run the requests to see api data and responses
+#### 7.1 - Get a client
+
+1) https://www.thunderclient.com/
+
+2) https://www.getpostman.com - Download and install https://www.getpostman.com 
+
+#### 7.2 - Import "postman" collection and run requests
+
+Use the client of your choice to run the requests to see api data and responses after importing the collection in the "postman" folder
 
 The requests are pointed to http://localhost:6001 as a base url.
 
