@@ -1,8 +1,10 @@
-import { MigrationInterface, QueryRunner } from 'typeorm';
+import { MigrationInterface, QueryRunner } from "typeorm";
 
-export class ContinentInitialMigration1577228125192 implements MigrationInterface {
+export class ContinentInitialMigration1577228125192
+  implements MigrationInterface
+{
   public async up(queryRunner: QueryRunner): Promise<any> {
-    const tableExists = await queryRunner.hasTable('continent');
+    const tableExists = await queryRunner.hasTable("continent");
     if (!tableExists) {
       await queryRunner.query(`
 			CREATE TABLE public.continent

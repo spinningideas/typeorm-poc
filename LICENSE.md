@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2020 spinningideas
+Copyright (c) 2022 spinningideas
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

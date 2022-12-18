@@ -1,50 +1,50 @@
-import { Entity, Column, Generated } from 'typeorm';
+import { Entity, Column, Generated } from "typeorm";
 
-@Entity('country', { schema: 'public' })
+@Entity("country", { schema: "public" })
 export default class Country {
   @Column({
     generated: true,
     nullable: false,
     primary: true,
-    name: 'country_id'
+    name: "country_id",
   })
-  @Generated('uuid')
+  @Generated("uuid")
   countryId: string;
 
   @Column({
-    name: 'country_name',
+    name: "country_name",
     length: 100,
     unique: true,
-    nullable: false
+    nullable: false,
   })
   countryName: string;
 
   @Column({
-    name: 'country_code',
+    name: "country_code",
     length: 2,
     unique: true,
-    nullable: false
+    nullable: false,
   })
   countryCode: string;
 
   @Column({
-    name: 'country_code3',
+    name: "country_code3",
     length: 3,
     unique: true,
-    nullable: false
+    nullable: false,
   })
   countryCode3: string;
 
   @Column({
-    name: 'capital',
-    length: 100
+    name: "capital",
+    length: 100,
   })
   capital: string;
 
   @Column({
-    name: 'continent_code',
+    name: "continent_code",
     length: 2,
-    nullable: false
+    nullable: false,
   })
   continentCode: string;
 
@@ -56,31 +56,31 @@ export default class Country {
 
   @Column({
     precision: 10,
-    scale: 6
+    scale: 6,
   })
   latitude: number;
 
   @Column({
     precision: 10,
-    scale: 6
+    scale: 6,
   })
   longitude: number;
 
   @Column({
-    name: 'currency_code',
-    length: 3
+    name: "currency_code",
+    length: 3,
   })
   currencyCode: string;
 
   @Column({
-    name: 'currency_name',
-    length: 50
+    name: "currency_name",
+    length: 50,
   })
   currencyName: string;
 
   @Column({
-    name: 'languages',
-    length: 255
+    name: "languages",
+    length: 255,
   })
   languages: string;
 }

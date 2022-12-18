@@ -1,4 +1,4 @@
-import { Connection, Repository } from 'typeorm';
+import { DataSource, Repository } from "typeorm";
 
 export type ObjectType<T> = { new (): T };
 
@@ -6,21 +6,21 @@ export type OrderByType = {
   [name: string]: string;
 };
 
-export default class TypeOrmRepository<T> {
-  dbConn: Connection;
+class TypeOrmRepository<T> {
+  dataSource: DataSource;
   repoEntityType: ObjectType<T>;
   repo: Repository<T> = null;
 
-  constructor(dbConn: Connection, repoType: ObjectType<T>) {
-    if (dbConn) {
-      this.dbConn = dbConn;
+  constructor(dataSource: DataSource, repoType: ObjectType<T>) {
+    if (dataSource) {
+      this.dataSource = dataSource;
     }
     this.repoEntityType = repoType;
   }
 
   getRepo = () => {
     if (!this.repo) {
-      this.repo = this.dbConn.getRepository<T>(this.repoEntityType);
+      this.repo = this.dataSource.getRepository<T>(this.repoEntityType);
       return this.repo;
     }
     return this.repo;
@@ -96,7 +96,8 @@ export default class TypeOrmRepository<T> {
       .findAndCount({
         where: criteria,
         skip: offset,
-        take: pageSize
+        take: pageSize,
+        // order: orderByVal
       })
       .then(
         (data) => {
@@ -111,9 +112,9 @@ export default class TypeOrmRepository<T> {
   };
 
   getOrderByValue = (orderBy: string, orderDesc: boolean): OrderByType => {
-    let orderDirection = 'ASC';
+    let orderDirection = "ASC";
     if (orderDesc === true) {
-      orderDirection = 'DESC';
+      orderDirection = "DESC";
     }
     const prop = this.getOrderByProp(this.repoEntityType, orderBy);
     return { prop: orderDirection };
@@ -121,18 +122,18 @@ export default class TypeOrmRepository<T> {
 
   getOrderByProp = <T>(obj: T, key: string): string => {
     let keys = [];
-    console.log('getOrderByProp-obj:' + obj);
+    // console.log("getOrderByProp-obj:" + obj);
     Object.keys(obj).forEach((key) => keys.push(key));
-    console.log('getOrderByProp-obj-keys:' + JSON.stringify(keys));
+    // console.log("getOrderByProp-obj-keys:" + JSON.stringify(keys));
     return obj[key];
   };
 
   /**
-   * get one record using given  /:criteria
+   * get one record using given :criteria
    */
   findOneWhere = async (criteria: any) => {
     return this.getRepo()
-      .findOne(criteria)
+      .findOneBy(criteria)
       .then(
         (data) => {
           return data;
@@ -196,4 +197,4 @@ export default class TypeOrmRepository<T> {
   };
 }
 
-module.exports = TypeOrmRepository;
+export default TypeOrmRepository;

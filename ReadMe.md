@@ -2,6 +2,18 @@
 
 The code in this repo demonstrates use of [typeorm](https://typeorm.io/) as an ORM using two tables with geography data sets. This example uses typescript and contains use of ts-node to build typescript and run this code in standard ES5 javascript hosted in a traditional node.js express app
 
+
+This code uses the following libaries:
+
+- [typeorm](https://typeorm.io/)
+- [typescript](https://www.typescriptlang.org/)
+- [express](https://expressjs.com/)
+- [postgresql](https://www.postgresql.org/)
+
+This code assumes usage of typeorm and typescript requires postgresql but you could switch database vendors and use MySQL or MS SQL Server or any db supported by typeorm. See https://typeorm.io/data-source-options
+
+This proof of concept uses a repository to get data from database and uses [express](https://expressjs.com/).
+
 See https://typeorm.io/ and notes below for more info
 
 ## Get Started
@@ -10,7 +22,7 @@ To get started perform the following steps:
 
 ### 1) Install PostgreSQL  
 
-Go to downloads section and select the latest version (13.2 as of 4/2021) for your operating system
+Go to downloads section and select the latest version (15.x as of 12/2022) for your operating system
 
 https://www.postgresql.org/download/
 
@@ -18,24 +30,26 @@ https://www.postgresql.org/download/
 
 - After installing locally you should have database server and the code connects to db using information in ormconfig.ts file so you need to ensure this db and user exists before running the code
 - Create an empty database named "typeorm_poc_db"
-- Create a create an account named "typeorm_poc_user" in your postgres database server with full permissions to the database named "typeorm_poc_db" using the password in ormconfig.ts (or change it in that file to match what you provided when you create the account)
+- Create a create an account named "typeorm_poc_user" in your postgres database server with full permissions to the database named "typeorm_poc_db" using the password in Database.ts (or change it in that file to match what you provided when you create the account)
 
 Here are sql scripts to run:
 
 ```
 CREATE DATABASE typeorm_poc_db;
 
-CREATE ROLE typeorm_poc_user LOGIN PASSWORD 'the_secure_password_from_ormconfig.ts';
+CREATE ROLE typeorm_poc_user LOGIN PASSWORD 'the_secure_password_from_config_in_ormconfig.ts';
 
 GRANT CONNECT ON DATABASE typeorm_poc_db TO typeorm_poc_user;
   
 GRANT ALL PRIVILEGES ON DATABASE typeorm_poc_db TO typeorm_poc_user;
 
+GRANT ALL ON SCHEMA public TO typeorm_poc_user;
+
 ```
 
-### 3) Change directory into "server" folder and run npm install
+### 3) Run npm install
 
-```cd server```
+Run command to install the npm packages
 
 ```npm install```
 
