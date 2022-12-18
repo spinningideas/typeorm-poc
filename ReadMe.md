@@ -30,7 +30,7 @@ https://www.postgresql.org/download/
 
 - After installing locally you should have database server and the code connects to db using information in ormconfig.ts file so you need to ensure this db and user exists before running the code
 - Create an empty database named "typeorm_poc_db"
-- Create a create an account named "typeorm_poc_user" in your postgres database server with full permissions to the database named "typeorm_poc_db" using the password in Database.ts (or change it in that file to match what you provided when you create the account)
+- Create a create an account named "typeorm_poc_user" in your postgres database server with full permissions to the database named "typeorm_poc_db" using the password in Database.ts (after changing the value SET_YOUR_PASSWORD to be your desired password)
 
 Here are sql scripts to run:
 
@@ -40,7 +40,7 @@ NOTE: run one at a time in order, first create the db then select the db and run
 ```
 CREATE DATABASE typeorm_poc_db;
 
-CREATE ROLE typeorm_poc_user LOGIN PASSWORD 'the_secure_password_from_config_in_ormconfig.ts';
+CREATE ROLE typeorm_poc_user LOGIN PASSWORD 'SET_YOUR_PASSWORD - the_secure_password_from_config_in_ormconfig.ts';
 
 GRANT CONNECT ON DATABASE typeorm_poc_db TO typeorm_poc_user;
   
